@@ -2,8 +2,10 @@
   "name": "@victortolbert/starwars-names",
   "version": "0.0.0-development",
   "description": "Get random Star Wars names",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
+    "prebuild": "rimraf dist",
+    "build": "babel --copy-files --out-dir dist --ignore *.test.js src",
     "commit": "git-cz",
     "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
@@ -20,6 +22,10 @@
     "star",
     "wars"
   ],
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "author": "Victor Tolbert <victor.tolbert@gmail.com> (https://victortolbert.com/)",
   "license": "MIT",
   "bugs": {
@@ -30,6 +36,8 @@
     "unique-random-array": "1.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "codecov.io": "^0.1.6",
     "commitizen": "^2.9.6",
@@ -37,6 +45,7 @@
     "ghooks": "^2.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^4.0.1",
+    "rimraf": "^2.6.2",
     "semantic-release": "^8.2.0"
   },
   "config": {
